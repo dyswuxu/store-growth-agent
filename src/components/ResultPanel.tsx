@@ -98,7 +98,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             </div>
             <ResultCard label="风险点" value={
               <ul className="space-y-1">
-                {output.riskPoints.map((risk, i) => (
+                {output.riskPoints.map((risk: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <span className="text-amber-500 mt-0.5">•</span>
                     {risk}
@@ -139,7 +139,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             } />
             <ResultCard label="关键风险提示" value={
               <ul className="space-y-1">
-                {output.riskWarnings.map((warning, i) => (
+                {output.riskWarnings.map((warning: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <AlertCircle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
                     {warning}
@@ -149,7 +149,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             } />
             <ResultCard label="初步建议动作" value={
               <ul className="space-y-1">
-                {output.suggestions.map((s, i) => (
+                {output.suggestions.map((s: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
                     {s}
@@ -185,7 +185,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             } />
             <ResultCard label="主要短板" value={
               <ul className="space-y-1">
-                {output.weaknesses.map((w, i) => (
+                {output.weaknesses.map((w: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <span className="text-amber-500 mt-0.5">•</span>
                     {w}
@@ -195,7 +195,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             } />
             <ResultCard label="优先改善动作" value={
               <ul className="space-y-1">
-                {output.improvementActions.map((a, i) => (
+                {output.improvementActions.map((a: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
                     {a}
@@ -225,7 +225,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             } />
             <ResultCard label="本月亮点" value={
               <ul className="space-y-1">
-                {output.highlights.map((h, i) => (
+                {output.highlights.map((h: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <span className="text-green-500 mt-0.5">✓</span>
                     {h}
@@ -235,7 +235,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             } />
             <ResultCard label="主要问题" value={
               <ul className="space-y-1">
-                {output.problems.map((p, i) => (
+                {output.problems.map((p: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <span className="text-amber-500 mt-0.5">•</span>
                     {p}
@@ -245,7 +245,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             } />
             <ResultCard label="下月行动项" value={
               <ul className="space-y-1">
-                {output.nextActions.map((a, i) => (
+                {output.nextActions.map((a: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <span className="text-blue-500 font-medium">{i + 1}.</span>
                     {a}
@@ -255,7 +255,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
             } />
             <ResultCard label="可复制经验" value={
               <ul className="space-y-1">
-                {output.replicableExperiences.map((e, i) => (
+                {output.replicableExperiences.map((e: string, i: number) => (
                   <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                     {e}
