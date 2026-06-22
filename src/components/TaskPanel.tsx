@@ -36,7 +36,7 @@ const moduleConfig = {
 
 export function TaskPanel({ activeModule, currentExample, status, onExampleChange }: TaskPanelProps) {
   const config = moduleConfig[activeModule]
-  const example = config.examples[currentExample]
+  const example = config.examples[currentExample] as any
 
   const renderFields = () => {
     switch (activeModule) {
