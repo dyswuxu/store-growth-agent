@@ -62,7 +62,7 @@ export function ResultPanel({ activeModule, currentExample, status, onGenerate }
       )
     }
 
-    const output = example.output
+    const output = example.output as any
 
     return (
       <motion.div
