@@ -3,72 +3,51 @@
 import { useState } from 'react'
 import { Header } from '@/components/Header'
 import { Sidebar } from '@/components/Sidebar'
-import { WorkflowStrip } from '@/components/WorkflowStrip'
-import { TaskPanel } from '@/components/TaskPanel'
-import { ResultPanel } from '@/components/ResultPanel'
-import { KnowledgePanel } from '@/components/KnowledgePanel'
-import { ModuleType, TaskStatus } from '@/types'
+import { ProfitPanel } from '@/components/ProfitPanel'
+import { ExpandPanel } from '@/components/ExpandPanel'
+import { ChatPanel } from '@/components/ChatPanel'
+import { DashboardPanel } from '@/components/DashboardPanel'
+import { ModuleType } from '@/types'
 
 export default function Home() {
-  const [activeModule, setActiveModule] = useState<ModuleType>('recruitment')
-  const [currentExample, setCurrentExample] = useState(0)
-  const [status, setStatus] = useState<TaskStatus>('pending')
-
-  const handleGenerate = () => {
-    setStatus('analyzing')
-    // Simulate AI processing
-    setTimeout(() => {
-      setStatus('generated')
-    }, 1500)
-  }
+  const [activeModule, setActiveModule] = useState<ModuleType>('profit')
+  const [refreshKey, setRefreshKey] = useState(0)
 
   const handleNewTask = () => {
-    setStatus('pending')
-    setCurrentExample(0)
+    setRefreshKey(k => k + 1)
   }
 
   const handleExport = () => {
-    if (status === 'generated' || status === 'exportable') {
-      alert('报告导出功能演示：实际会生成 PDF/Word 格式的报告')
-    } else {
-      alert('请先生成分析结果')
+    alert('报告导出功能开发中...')
+  }
+
+  const renderModule = () => {
+    switch (activeModule) {
+      case 'profit':
+        return <ProfitPanel key={refreshKey} />
+      case 'expand':
+        return <ExpandPanel key={refreshKey} />
+      case 'chat':
+        return <ChatPanel key={refreshKey} />
+      case 'dashboard':
+        return <DashboardPanel key={refreshKey} />
+      default:
+        return <ProfitPanel key={refreshKey} />
     }
   }
 
-  const handleViewExample = () => {
-    alert('当前页面已展示示例数据，点击"示例1/示例2"可切换不同场景')
-  }
-
   return (
-    <div className="h-screen flex flex-col bg-gray-50">
+    <div className="h-screen flex flex-col bg-slate-950">
       <Header
         onNewTask={handleNewTask}
         onExport={handleExport}
-        onViewExample={handleViewExample}
+        onViewExample={() => {}}
       />
-      <WorkflowStrip />
       <div className="flex-1 flex overflow-hidden">
         <Sidebar activeModule={activeModule} onModuleChange={setActiveModule} />
-        <main className="flex-1 p-6 overflow-y-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
-            <TaskPanel
-              activeModule={activeModule}
-              currentExample={currentExample}
-              status={status}
-              onExampleChange={(index) => {
-                setCurrentExample(index)
-                setStatus('pending')
-              }}
-            />
-            <ResultPanel
-              activeModule={activeModule}
-              currentExample={currentExample}
-              status={status}
-              onGenerate={handleGenerate}
-            />
-          </div>
+        <main className="flex-1 overflow-y-auto">
+          {renderModule()}
         </main>
-        <KnowledgePanel activeModule={activeModule} status={status} />
       </div>
     </div>
   )

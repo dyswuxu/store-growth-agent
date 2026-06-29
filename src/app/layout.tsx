@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: '开店增长 Agent',
-  description: '招商、选址、开业、复盘的统一增长中枢',
+  title: '门店增长 Agent | 吴旭',
+  description: '基于吴旭门店增长方法论的 AI 诊断工具，专注盈利诊断与拓展评估',
 }
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased bg-slate-950">{children}</body>
     </html>
   )
 }
